@@ -5,16 +5,29 @@ Resources:
    Type: AWS::Serverless::Function
    Properties:
       CodeUri: s3://SAMTemplate/hello-dev.jar
-      Handler: com.serverless.Handler
+      Handler: com.serverless.Handler1
       Runtime: java8
       FunctionName: hiworld
-      Events:
-       MyTimeApi:
-         Type: Api
-         Properties:
-           Path: /TimeResource
-           Method: post
-      Environment:
-        Variables: 
-          S3_BUCKET: SAMTemplate
+ PlayersAPI:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: Player API
+      Description: A demo API for Player management
+      Body: 
+         swagger: '2.0'
+         title: Player API
+         version: 1.0.1
+         paths:
+          "/player/{id}":
+            get:
+              produces:
+              - application/json
+            parameters:
+            - name: id
+              in: path
+              required: true
+              type: string
+              required:
+              - playerId
+              - alias
     

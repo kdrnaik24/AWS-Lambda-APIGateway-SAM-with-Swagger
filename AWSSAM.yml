@@ -5,7 +5,7 @@
    Type: AWS::Serverless::Function
    Properties:
       CodeUri: s3://SAMTemplate/hello-dev.jar
-      Handler: com.serverless.Handler1
+      Handler: com.serverless.Handler
       Runtime: java8
       FunctionName: hiworld
  PlayersAPI:
